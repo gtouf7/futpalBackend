@@ -24,8 +24,8 @@ app.use(express.json());
 app.use((req, res, next) => {
     const allowedOrigins = [
         'http://localhost:3000',
-      'futpal-ten.vercel.app', //new Production url
-      'futpal-backend.vercel.app', // Production url
+      'https://futpal-ten.vercel.app', //new Production url
+      'https://futpal-backend.vercel.app', // Production url
       'http://localhost:7700' // Development url
     ];
   
