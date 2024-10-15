@@ -20,11 +20,24 @@ dotenv.config();
 // Initialize express app
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:3000', // PRODUCTION URL
-    methods: 'GET,POST',
-    allowedHeaders: ['Content-type', 'Authorization'],
-}));
+//cors enabling
+app.use((req, res, next) => {
+    const allowedOrigins = [
+        'http://localhost:3000',
+      'futpal-ten.vercel.app', //new Production url
+      'futpal-backend.vercel.app', // Production url
+      'http://localhost:7700' // Development url
+    ];
+  
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+      res.header('Access-Control-Allow-Origin', origin);
+    }
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
+app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 7700;
 
