@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "npm start",
-    "start": "vercel dev"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
